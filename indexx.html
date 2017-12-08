@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<script src="assets/js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("button").click(function() {
+				$.ajax({
+					url: 'http://api.giantbomb.com/game/1/?api_key=ee6f3f25061cf71a97bd544052cf338657329c4e&format=jsonp',
+					data: {
+						format: 'json'
+					},
+					error: function() {
+						$('#info').html('<p>An error has occurred</p>');
+					},
+					dataType: 'json',
+					crossDomain: true,
+					type: 'GET',
+					success: function(data) {
+						var c = data.error;
+						alert(c);
+
+					},
+					type: 'GET'
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<div id="div1">
+		<h2>Let jQuery AJAX Change This Text</h2></div>
+
+	<button>Get External Content</button>
+
+</body>
+
+</html>
