@@ -288,6 +288,23 @@ $(document).ready(function() {
 		});
 	};
 
+	$('#search').click(function() {
+		var searchs = $('#searchs').val();
+		$.ajax({
+			url: "http://api.giantbomb.com/search/",
+			type: "get",
+			data: {
+				api_key: "ee6f3f25061cf71a97bd544052cf338657329c4e",
+
+				query: searchs,
+				resources: "game",
+				format: "jsonp",
+				json_callback: "search"
+			},
+			dataType: "jsonp"
+		});
+	});
+
 	$(document).ajaxStart(function() {
 		$("#wait").css("display", "block");
 	});
@@ -375,6 +392,22 @@ function NintendoGame(data) {
 		$('#Nintendo-Game').append('<div class="col-sm-2 horizon-item" style="overflow:hidden;><a href="infogame.html?guid=' + data.results[i].guid + '"><img src="' + data.results[i].image.original_url + '" alt="Rounded Image" class="img-rounded" height="230" width="170"><div class="space-20"></div></a><div class=" col-sm-12 text-truncate text-center"><p>' + data.results[i].name + '<p></div></div>');
 	}
 	// $('#div3').append('<div class="space-30"></div>');
+	console.log(data);
+}
+
+function search(data) {
+	$('.jumlah').append(data.number_of_page_results);
+
+	for (var i = 0; i < data.results.length; i++) {
+
+		// $('#div2').append('<h1> ' + data.results[i].guid + '  </h1>')
+		// $('#div2').append('<img src="' + data.results[i].image.original_url + '" alt="" width="100" height="100">');
+		$('#hasil').append('<div class="row"><div class="col-sm-3 " id="hasil-fotogame"><a href="infogame.html?guid=' + data.results[i].guid + '"><img src="' + data.results[i].image.super_url + '" alt="Rounded Image" class="img-rounded img-responsive"></a></div><div class="col-md-6 "><div class="col-md-12"><h3 id="hasil-namagame">' + data.results[i].name + '</h3></div><div class="col-sm-12"><ul class="list-inline"><li class="list-inline-item"><h5 id="infogame">Overview :</h5></li><li class="list-inline-item"><div id="hasil-publisher">' + data.results[i].deck + '</div></li></ul><div class="space-30"></div></div>');
+	}
+	// $('#div1').append('<h1> ' + data.results.images.length + '  </h1>')
+	// for (var i = 0; i < data.results.images.length; i++) {
+	// 	$('#div2').append('<img src="' + data.results.images[i].original + '" alt="" width="100" height="100">');
+	// }
 	console.log(data);
 }
 
