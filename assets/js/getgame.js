@@ -3,8 +3,6 @@ $(document).ready(function() {
 		hotgame();
 	});
 
-
-
 	$('#clear').click(function() {
 		$('#div1').html('');
 		$('#div2').html('');
