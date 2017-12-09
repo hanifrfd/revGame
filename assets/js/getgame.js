@@ -1,4 +1,16 @@
 $(document).ready(function() {
+	var items = Array('navbar-warning', 'navbar-success', 'navbar-info', 'navbar-primary');
+	var random = items[Math.floor(Math.random() * items.length)]
+
+	$(".rand-nav-color").each(function() {
+		$(this).addClass(items.splice(~~(Math.random() * items.length), 1)[0]);
+	});
+
+	$('#infogame').click(function() {
+		infogame();
+	});
+
+
 	$('#hotgame').click(function() {
 		hotgame();
 	});
@@ -59,6 +71,42 @@ $(document).ready(function() {
 			},
 		});
 	});
+
+	function infogame() {
+		$('#div1').html('');
+		$('#div2').html('');
+		$('#div3').html('');
+		var guid = '3030-23846';
+		$.ajax({
+			url: "https://www.giantbomb.com/api/game/" + guid + "/",
+			type: "get",
+			data: {
+				api_key: "ee6f3f25061cf71a97bd544052cf338657329c4e",
+				format: "jsonp",
+				json_callback: "infogame_callback"
+			},
+			dataType: "jsonp",
+			error: function(jqXHR, exception) {
+				var msg = '';
+				if (jqXHR.status === 0) {
+					msg = 'Not connect.\n Verify Network.';
+				} else if (jqXHR.status == 404) {
+					msg = 'Requested page not found. [404]';
+				} else if (jqXHR.status == 500) {
+					msg = 'Internal Server Error [500].';
+				} else if (exception === 'parsererror') {
+					msg = 'Requested JSON parse failed.';
+				} else if (exception === 'timeout') {
+					msg = 'Time out error.';
+				} else if (exception === 'abort') {
+					msg = 'Ajax request aborted.';
+				} else {
+					msg = 'Uncaught Error.\n' + jqXHR.responseText;
+				}
+				$('#div1').append(msg);
+			},
+		});
+	};
 
 	function hotgame() {
 		$('#div1').html('');
@@ -129,6 +177,24 @@ function example2(data) {
 		// $('#div2').append('<img src="' + data.results[i].image.original_url + '" alt="" width="100" height="100">');
 		$('#div2').append('<div class="card horizontal"><div class="card-image card-small"><img src="' + data.results[i].image.small_url + '" width="100" height="auto"></div> <div class = "card-stacked" ><div class = "card-content" ><div class = "row" ><div class = "col s12" >	Nama game: <h4> ' + data.results[i].name + '</h4> </div><div class = "col s12" > ID game: <h4> ' + data.results[i].guid + '</h4></div> </div> </div> <div class = "card-action" ><a href = "#" > This is a link < /a> </div> </div> </div>');
 	}
+	// $('#div1').append('<h1> ' + data.results.images.length + '  </h1>')
+	// for (var i = 0; i < data.results.images.length; i++) {
+	// 	$('#div2').append('<img src="' + data.results.images[i].original + '" alt="" width="100" height="100">');
+	// }
+	console.log(data);
+}
+
+function infogame_callback(data) {
+	$('#info-namagame').append(data.results.name);
+	$('#publisher').append(data.results.publishers[0].name);
+	$('#platform').append(data.results.platforms[0].name);
+	$('#info-desc').append(data.results.description);
+	$('#info-fotogame').append('<img src="' + data.results.image.original_url + '" alt="Rounded Image" class="img-rounded img-responsive">');
+
+	for (var i = 0; i < data.results.images.length; i++) {
+		$('#info-screenshot').append('<div class="col-sm-3"><img src="' + data.results.images[i].original + '" alt="Rounded Image" class="img-rounded img-responsive"></div>');
+	}
+	$('#info-screenshot').append('<div class="space-50"></div>');
 	// $('#div1').append('<h1> ' + data.results.images.length + '  </h1>')
 	// for (var i = 0; i < data.results.images.length; i++) {
 	// 	$('#div2').append('<img src="' + data.results.images[i].original + '" alt="" width="100" height="100">');

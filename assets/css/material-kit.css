@@ -3616,6 +3616,9 @@ h2.title {
   content: "";
   background-color: rgba(0, 0, 0, 0.4);
 }
+
+
+
 .header-filter .container {
   z-index: 2;
   position: relative;
