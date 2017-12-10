@@ -133,7 +133,7 @@ $(document).ready(function() {
 			data: {
 				api_key: "d597c1525476b0216681ab7ff5eab1d11e44ff38",
 				// field_list: "game,desription,reviewer",
-				filter: "platforms:94,expected_release_year:2016,expected_release_quarter:4",
+				filter: "platforms:94,expected_release_year:2017,expected_release_quarter:2",
 				sort: "date_added:desc",
 				limit: "20",
 				format: "jsonp",
@@ -175,7 +175,7 @@ $(document).ready(function() {
 			data: {
 				api_key: "d597c1525476b0216681ab7ff5eab1d11e44ff38",
 				// field_list: "game,desription,reviewer",
-				filter: "platforms:146,expected_release_year:2016,expected_release_quarter:3",
+				filter: "platforms:146,expected_release_year:2017,expected_release_quarter:3",
 				sort: "date_added:desc",
 				limit: "20",
 				format: "jsonp",
@@ -217,7 +217,7 @@ $(document).ready(function() {
 			data: {
 				api_key: "d597c1525476b0216681ab7ff5eab1d11e44ff38",
 				// field_list: "game,desription,reviewer",
-				filter: "platforms:123,expected_release_year:2016,expected_release_quarter:3",
+				filter: "platforms:123,expected_release_year:2017,expected_release_quarter:3",
 				sort: "date_added:desc",
 				limit: "20",
 				format: "jsonp",
@@ -258,7 +258,7 @@ $(document).ready(function() {
 			data: {
 				api_key: "d597c1525476b0216681ab7ff5eab1d11e44ff38",
 				// field_list: "game,desription,reviewer",
-				filter: "platforms:117,expected_release_year:2016,expected_release_quarter:3",
+				filter: "platforms:117,expected_release_year:2017,expected_release_quarter:3",
 				sort: "date_added:desc",
 				limit: "20",
 				format: "jsonp",
@@ -294,9 +294,9 @@ $(document).ready(function() {
 			url: "http://api.giantbomb.com/search/",
 			type: "get",
 			data: {
-				api_key: "ee6f3f25061cf71a97bd544052cf338657329c4e",
-
+				api_key: "d597c1525476b0216681ab7ff5eab1d11e44ff38",
 				query: searchs,
+				limit: "100",
 				resources: "game",
 				format: "jsonp",
 				json_callback: "search"
@@ -306,11 +306,11 @@ $(document).ready(function() {
 	});
 
 	$(document).ajaxStart(function() {
-		$("#wait").css("display", "block");
+		$(".wait").css("display", "block");
 	});
 
 	$(document).ajaxComplete(function() {
-		$("#wait").css("display", "none");
+		$(".wait").css("display", "none");
 	});
 
 });
@@ -373,7 +373,7 @@ function PCGame(data) {
 
 function PS4Game(data) {
 	for (var i = 0; i < data.results.length; i++) {
-		$('#PS4-game').append('<div class="col-sm-2 horizon-item" style="overflow:hidden;><a href="infogame.html?guid=' + data.results[i].guid + '"><img src="' + data.results[i].image.original_url + '" alt="Rounded Image" class="img-rounded" height="230" width="170"><div class="space-20"></div></a><div class=" col-sm-12 text-truncate text-center"><p>' + data.results[i].name + '<p></div></div>');
+		$('#PS4-game').append('<div class="col-sm-2 horizon-item" style="overflow:hidden;"><a href="infogame.html?guid=' + data.results[i].guid + '"><img src="' + data.results[i].image.original_url + '" alt="Rounded Image" class="img-rounded" height="230" width="170"><div class="space-20"></div></a><div class=" col-sm-12 text-truncate text-center"><p>' + data.results[i].name + '<p></div></div>');
 	}
 	// $('#div3').append('<div class="space-30"></div>');
 	console.log(data);
@@ -381,7 +381,7 @@ function PS4Game(data) {
 
 function AndroidGame(data) {
 	for (var i = 0; i < data.results.length; i++) {
-		$('#Android-Game').append('<div class="col-sm-2 horizon-item" style="overflow:hidden;><a href="infogame.html?guid=' + data.results[i].guid + '"><img src="' + data.results[i].image.original_url + '" alt="Rounded Image" class="img-rounded" height="230" width="170"><div class="space-20"></div></a><div class=" col-sm-12 text-truncate text-center"><p>' + data.results[i].name + '<p></div></div>');
+		$('#Android-Game').append('<div class="col-sm-2 horizon-item" style="overflow:hidden;"><a href="infogame.html?guid=' + data.results[i].guid + '"><img src="' + data.results[i].image.original_url + '" alt="Rounded Image" class="img-rounded" height="230" width="170"><div class="space-20"></div></a><div class=" col-sm-12 text-truncate text-center"><p>' + data.results[i].name + '<p></div></div>');
 	}
 	// $('#div3').append('<div class="space-30"></div>');
 	console.log(data);
@@ -389,7 +389,7 @@ function AndroidGame(data) {
 
 function NintendoGame(data) {
 	for (var i = 0; i < data.results.length; i++) {
-		$('#Nintendo-Game').append('<div class="col-sm-2 horizon-item" style="overflow:hidden;><a href="infogame.html?guid=' + data.results[i].guid + '"><img src="' + data.results[i].image.original_url + '" alt="Rounded Image" class="img-rounded" height="230" width="170"><div class="space-20"></div></a><div class=" col-sm-12 text-truncate text-center"><p>' + data.results[i].name + '<p></div></div>');
+		$('#Nintendo-Game').append('<div class="col-sm-2 horizon-item" style="overflow:hidden;"><a href="infogame.html?guid=' + data.results[i].guid + '"><img src="' + data.results[i].image.original_url + '" alt="Rounded Image" class="img-rounded" height="230" width="170"><div class="space-20"></div></a><div class=" col-sm-12 text-truncate text-center"><p>' + data.results[i].name + '<p></div></div>');
 	}
 	// $('#div3').append('<div class="space-30"></div>');
 	console.log(data);

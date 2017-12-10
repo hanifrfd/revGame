@@ -247,7 +247,7 @@
     padding: 0;
 }
 
-#wait{
+.wait{
   position:absolute;top:400%;left:50%;padding:2px;
 }
 @media screen and (min-width: 991px){
@@ -319,7 +319,7 @@
   transition: 1.5s ease-in-out;
   -moz-transition: 1.5s ease-in-out;
   -webkit-transition: 1.5s ease-in-out;
-  
+
 }
 
 .navbar-default.navbar-small .logo-container .brand{
