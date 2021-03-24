@@ -14,7 +14,7 @@ $(document).ready(function() {
 	pcgame();
 	ps4game();
 	androidgame();
-	nintedogame();
+	nintendogame();
 
 
 	$('#example1').click(function() {
@@ -133,7 +133,7 @@ $(document).ready(function() {
 			data: {
 				api_key: "d597c1525476b0216681ab7ff5eab1d11e44ff38",
 				// field_list: "game,desription,reviewer",
-				filter: "platforms:94,expected_release_year:2017,expected_release_quarter:2",
+				filter: "platforms:94,",
 				sort: "date_added:desc",
 				limit: "20",
 				format: "jsonp",
@@ -175,7 +175,7 @@ $(document).ready(function() {
 			data: {
 				api_key: "d597c1525476b0216681ab7ff5eab1d11e44ff38",
 				// field_list: "game,desription,reviewer",
-				filter: "platforms:146,expected_release_year:2017,expected_release_quarter:3",
+				filter: "platforms:146,",
 				sort: "date_added:desc",
 				limit: "20",
 				format: "jsonp",
@@ -217,7 +217,7 @@ $(document).ready(function() {
 			data: {
 				api_key: "d597c1525476b0216681ab7ff5eab1d11e44ff38",
 				// field_list: "game,desription,reviewer",
-				filter: "platforms:123,expected_release_year:2017,expected_release_quarter:3",
+				filter: "platforms:123",
 				sort: "date_added:desc",
 				limit: "20",
 				format: "jsonp",
@@ -247,7 +247,7 @@ $(document).ready(function() {
 		});
 	};
 
-	function nintedogame() {
+	function nintendogame() {
 		$('#div1').html('');
 		$('#div2').html('');
 		$('#div3').html('');
@@ -258,7 +258,7 @@ $(document).ready(function() {
 			data: {
 				api_key: "d597c1525476b0216681ab7ff5eab1d11e44ff38",
 				// field_list: "game,desription,reviewer",
-				filter: "platforms:117,expected_release_year:2017,expected_release_quarter:3",
+				filter: "platforms:117",
 				sort: "date_added:desc",
 				limit: "20",
 				format: "jsonp",
